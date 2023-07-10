@@ -46,6 +46,9 @@ button {
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
+button:hover {
+  background: hsl(240, 100%, 40%);
+}
 .qoute-container {
   max-width: 500px;
   margin: auto;

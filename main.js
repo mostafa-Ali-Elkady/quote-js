@@ -46,7 +46,13 @@ var quotes = [
   {
     qouteText: "Without music, life would be a mistake",
     author: "Friedrich Nietzsche",
-    src: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/authors/1596216614i/1077326._UX200_CR0,15,200,200_.jpg",
+    src: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/authors/1651474065i/1938._UX200_CR0,35,200,200_.jpg",
+  },
+  {
+    qouteText:
+      "Don't walk in front of me… I may not follow Don't walk behind me… I may not lead Walk beside me… just be my friend",
+    author: "Albert Camus",
+    src: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/authors/1686463588i/957894._UY200_CR46,0,200,200_.jpg",
   },
 ];
 // Variables
@@ -56,12 +62,26 @@ var author = document.getElementById("qoute-author");
 var image = document.getElementById("image");
 var qouteContainer = document.querySelector(".qoute-container");
 var index;
-var usedIndex = [];
+var usedIndexes = [];
 btn.addEventListener("click", function () {
-  index = Math.floor(Math.random() * quotes.length);
+  //Change button bg
+  btn.style.backgroundColor = "hsl(120, 80%, 40%)";
+  generateRandom();
   // Actions
   qouteContainer.style.opacity = "1";
   qoute.textContent = ` \“${quotes[index].qouteText}\”`;
   author.textContent = `${quotes[index].author}`;
   image.src = `${quotes[index].src}`;
+  console.log(index);
 });
+//Generate Random Index function
+function generateRandom() {
+  index = Math.floor(Math.random() * quotes.length);
+  while (usedIndexes.includes(index)) {
+    index = Math.floor(Math.random() * quotes.length);
+  }
+  usedIndexes.push(index);
+  if (usedIndexes.length >= 2) {
+    usedIndexes.shift();
+  }
+}
